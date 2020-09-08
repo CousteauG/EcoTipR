@@ -1,13 +1,13 @@
-getURL = function(Var, Lons, Lats, Each = 1, Res = '4km', iDate, timeResolution = 'YR'){
+getURL = function(Var, Lons, Lats, Each = 1, Res = '4km', iDate){
 
-  if(timeResolution == 'YR') {
+    timeResolution = 'YR'
     date_1 = as.Date(iDate, "%Y-%m-%d")
     Yr = format(date_1, format="%Y")
     iniDate = paste0(Yr, '-01-01')
     endDate = paste0(Yr, '-12-31')
     Dates = transDate(begin = iniDate, end = endDate)
     YearNumber = paste0(Dates$beginDOY, Dates$endDOY)
-  }
+ 
   
   
   Year1 = strftime(x = strptime(x = Dates$begin, format = '%Y-%m-%d'), format = '%Y')
