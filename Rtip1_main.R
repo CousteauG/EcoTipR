@@ -35,7 +35,7 @@ for(i in seq_along(uniqueDates)){
   # Lons and Lats are the ranges
   # timeResolution might be 'MO' (monthly) and 'DAY' (daily)
   url = getURL(Var = ObjVar, Lons = LongRange, Lats = LatiRange, 
-               iDate = uniqueDates[i], timeResolution = 'YR')
+               iDate = uniqueDates[i])
   
   # Open data:
   sst.nc<-nc_open(url) # download here
