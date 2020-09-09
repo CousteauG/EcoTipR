@@ -9,7 +9,7 @@ library(pracma)
 library(raster)
 library(MODIS)
 require(splancs)
-source('Rtip1_aux_fun.R')
+source('EcoTipR_1_aux_fun.R')
 
 #SET YOUR WD FIRST!
 
