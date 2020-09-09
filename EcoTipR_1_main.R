@@ -1,3 +1,6 @@
+# Cousteau Consultant Group -----------------------------------
+# Main script
+
 ## LOAD LIBRARIES
 library(rmarkdown)
 library(tinytex)
