@@ -1,3 +1,6 @@
+# Cousteau Consultant Group -----------------------------------
+# Auxiliary functions
+
 getURL = function(Var, Lons, Lats, Each = 1, Res = '4km', iDate){
 
     timeResolution = 'YR'
