@@ -1,0 +1,140 @@
+\documentclass{standalone}
+\usepackage{animate}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\tikzset{declare function={bellshape(\x,\mu,\sigma)=exp(-(\x-\mu)^2/(2*\sigma^2));}}
+\tikzset{declare function={normal(\x,\mu,\sigma)=1/(2.5066283*\sigma)*bellshape(\x,\mu,\sigma);}}
+
+\def\varA{{15, 10, 5, 0}}
+\def\varB{{5, 9.5, 12, 14}}
+\def\varC{{0.475, 1, 1.5, 2}}
+
+\begin{animateinline}[controls,autoplay,loop,poster=last]{4}
+\multiframe{4}{i=0+1}{
+\begin{tikzpicture}[scale=0.6]
+\foreach \j in {0,...,3}
+{
+\pgfmathparse{\varA[\j]} \let\varAA\pgfmathresult
+\begin{axis}[
+    axis lines = middle,
+    xtick ={0},
+    ytick ={0},
+    ymin = 0,
+    ymax = 20-\varAA,
+    xmin = 0,
+    xmax = 20,
+    x=1cm,y=1cm,
+    axis line style = thick,
+    yshift = \varAA cm,
+    ]
+\end{axis}
+}
+    
+\foreach \j in {0,...,\i}
+{
+\pgfmathparse{\varA[\j]} \let\varAA\pgfmathresult
+\pgfmathparse{\varB[\j]} \let\varBB\pgfmathresult
+\pgfmathparse{\varC[\j]} \let\varCC\pgfmathresult
+
+\begin{axis}[
+    axis lines = middle,
+    xtick ={0},
+    ytick ={0},
+    ymin = 0,
+    ymax = 20,
+    xmin = 0,
+    xmax = 20,
+    x=1cm,y=1cm,
+    axis line style = thick,
+]
+\end{axis}
+\begin{axis}[
+    axis lines = middle,
+    xtick ={0},
+    ytick ={0},
+    ymin = 0,
+    ymax = 20-\varAA,
+    xmin = 0,
+    xmax = 20,
+    x=1cm,y=1cm,
+    axis line style = thick,
+    yshift = \varAA cm,
+]
+\addplot [
+    domain=0:18,
+    samples=100,
+    line width = 1pt, red] {5*normal(x,\varBB,\varCC)};
+\addplot [
+    domain=0:18,
+    samples=300,
+    line width=1pt,
+    fill=red, draw=none,
+    fill opacity=0.1
+] {5*normal(x,\varBB,\varCC)} \closedcycle;
+\addplot [
+    ycomb, thick, blue,
+    no markers,
+    samples at={1,1.5,...,18}
+] {5*normal(x,\varBB,\varCC)};
+\addplot[ybar, bar width=14pt, domain=1:18,samples at={1,1.5,...,18}, fill=blue!50!cyan,fill opacity=0.3, draw=cyan]
+  {5*normal(x,\varBB,\varCC)};
+\end{axis}
+\begin{axis}[
+    axis lines = middle,
+    xtick ={0},
+    ytick ={0},
+    ymin = 0,
+    ymax = 20,
+    xmin = 0,
+    xmax = 20,
+    x=1cm,y=1cm,
+    axis line style = thick,
+]
+\addplot [->,dashed,
+    domain=4.5:\varBB,
+    samples=100,
+    line width = 2pt, black] {20*ln(1-(x/20))+25};
+\end{axis}
+\begin{axis}[
+    axis lines = middle,
+    xtick ={0},
+    ytick ={0},
+    ymin = 0,
+    ymax = 5,
+    xmin = 0,
+    xmax = 20,
+    x=1cm,y=1cm,
+    axis line style = thick,
+    yshift = -5 cm,
+]
+\addplot [
+    domain=0:18,
+    samples=300,
+    line width = 1pt, red] {5*normal(x,\varBB,\varCC)};
+\addplot [
+    domain=0:18,
+    samples=300,
+    line width=1pt,
+    fill=red, draw=none,
+    fill opacity=0.1
+] {5*normal(x,\varBB,\varCC)} \closedcycle;
+\addplot [
+    ycomb, thick, blue,
+    no markers,
+    samples at={1,1.5,...,18}
+] {5*normal(x,\varBB,\varCC)};
+\addplot[ybar, bar width=14pt, domain=1:18,samples at={1,1.5,...,18}, fill=blue!50!cyan,fill opacity=0.3, draw=cyan]
+  {5*normal(x,\varBB,\varCC)};
+\end{axis}
+}
+\end{tikzpicture}
+}
+
+\end{animateinline}
+
+\end{document}
