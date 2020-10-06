@@ -8,9 +8,6 @@ library(tidyr)
 library(ggplot2)
 library(animation)
 
-
-
-
 #Main function for read data
 read_cru_hemi <- function(filename) {
   
