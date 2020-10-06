@@ -1,7 +1,15 @@
+#Loading packages
+if(!require("dplyr")) install.packages("dplyr")
+if(!require("tidyr")) install.packages("tidyr")
+if(!require("ggplot2")) install.packages("ggplot2")
+if(!require("animation")) install.packages("animation")
 library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(animation)
+
+
+
 
 #Main function for read data
 read_cru_hemi <- function(filename) {
@@ -62,10 +70,10 @@ saveGIF({
             geom_hline(yintercept = 2, color = "black", lty = 2) +
             coord_polar() +
             annotate(x = 1, y = -1.5, geom = "text", label = i) +
-            annotate(x = 1, y = 1, geom = "label", label = "1.0캜", fill = "white", label.size = 0) +
-            annotate(x = 1, y = 1.5, geom = "label", label = "1.5캜", fill = "white", label.size = 0) +
-            annotate(x = 1, y = 2, geom = "label", label = "2.0캜", fill = "white", label.size = 0) +
-            ggtitle("Cambio de Temperatura Global (캜) 1850-2019") +
+            annotate(x = 1, y = 1, geom = "label", label = "1.0째C", fill = "white", label.size = 0) +
+            annotate(x = 1, y = 1.5, geom = "label", label = "1.5째C", fill = "white", label.size = 0) +
+            annotate(x = 1, y = 2, geom = "label", label = "2.0째C", fill = "white", label.size = 0) +
+            ggtitle("Cambio de Temperatura Global (째C) 1850-2019") +
             scale_x_continuous(labels = labelMonths, breaks = 1:13) +
             scale_y_continuous(labels = NULL, breaks = NULL) +
             ylab("") + xlab("")
