@@ -53,7 +53,7 @@ temp_dat_monthly <- temp_dat %>%
   filter(year !=2020)
 
 labelMonths <- months(seq(as.Date("1910/1/1"), as.Date("1911/1/1"), "months"))
-labelMonths <- gsub("(^...).*", "\\1", mo)
+labelMonths <- gsub("(^...).*", "\\1", labelMonths)
 
 #Creating GIF
 saveGIF({
