@@ -74,6 +74,6 @@ saveGIF({
             scale_x_continuous(labels = labelMonths, breaks = 1:13) +
             scale_y_continuous(labels = NULL, breaks = NULL) +
             ylab("") + xlab("")
-          
+         
     )}
   }, interval = 0.25)
