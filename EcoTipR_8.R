@@ -33,7 +33,7 @@ brokenBarplot <- function(height, ylim1, yAxis1 = list(), ylim2, yAxis2 = list()
 
   # Set 2 sub plots
   par(mfrow = c(2, 1), mar = c(0, 0, 0, 0), oma = par()$mar)
-
+  
   # Make the top plot
   extra <- diff(range(ylim2))*0.025
   index <- heightUp < ylim2[1]
